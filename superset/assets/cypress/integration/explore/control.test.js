@@ -61,7 +61,7 @@ describe('AdhocMetrics', () => {
     });
   });
 
-  xit('Clear metric and set custom sql adhoc metric', () => {
+  it('Clear metric and set custom sql adhoc metric', () => {
     const metric = 'SUM(num)/COUNT(DISTINCT name)';
 
     cy.visitChartByName('Num Births Trend');
@@ -80,7 +80,9 @@ describe('AdhocMetrics', () => {
       cy.get('#adhoc-metric-edit-tabs-tab-SQL').click();
       cy.get('.ace_content').click();
       cy.get('.ace_text-input')
-        .type(`{selectall}{backspace}${metric}`, { force: true });
+        .type('{selectall}{backspace}', { force: true })
+        .clear({ force: true })
+        .type(`${metric}`, { force: true });
       cy.get('button').contains('Save').click();
     });
 
@@ -110,7 +112,9 @@ describe('AdhocMetrics', () => {
       cy.get('.ace_identifier').contains('sum_girls');
       cy.get('.ace_content').click();
       cy.get('.ace_text-input')
-        .type('{selectall}{backspace}SUM(num)', { force: true });
+        .type('{selectall}{backspace}', { force: true })
+        .clear({ force: true })
+        .type('SUM(num)', { force: true });
       cy.get('#adhoc-metric-edit-tabs-tab-SIMPLE').click();
       cy.get('.select-value-label').contains('num');
       cy.get('button').contains('Save').click();
