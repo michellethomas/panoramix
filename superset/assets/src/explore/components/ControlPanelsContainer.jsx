@@ -48,6 +48,7 @@ class ControlPanelsContainer extends React.Component {
     this.getControlData = this.getControlData.bind(this);
     this.renderControlPanelSection = this.renderControlPanelSection.bind(this);
   }
+
   getControlData(controlName) {
     if (React.isValidElement(controlName)) {
       return controlName;
