@@ -783,7 +783,7 @@ export const controls = {
   x_ticks_layout: {
     type: 'SelectControl',
     label: t('X Tick Layout'),
-    choices: formatSelectOptions(['auto', 'flat', '45°', 'staggered']),
+    choices: formatSelectOptions(['auto', 'flat', '45 degrees', 'staggered']),
     default: 'auto',
     clearable: false,
     renderTrigger: true,
