@@ -846,7 +846,7 @@ def merge_request_params(form_data, params):
     form_data['url_params'] = url_params
 
 
-def user_label(user: User) -> Optional[str]:
+def user_label(user):
     """Given a user ORM FAB object, returns a label"""
     if user:
         if user.first_name and user.last_name:
