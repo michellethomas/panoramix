@@ -135,7 +135,9 @@ export default class SelectControl extends React.PureComponent {
   getOptions(props) {
     let options = [];
     if (props.options) {
-      options = props.options.map(x => x);
+      options = props.options.map(x => x).sort((a, b) => (
+        a.label || a[props.valueKey]).localeCompare(b.label || b[props.valueKey])
+      );
     } else if (props.choices) {
       // Accepts different formats of input
       options = props.choices.map(c => {
@@ -149,6 +151,7 @@ export default class SelectControl extends React.PureComponent {
         return { label: c, [props.valueKey]: c };
       });
     }
+
     // For FreeFormSelect, insert newly created values into options
     if (props.freeForm && props.value) {
       const existingOptionValues = new Set(options.map(c => c[props.valueKey]));
